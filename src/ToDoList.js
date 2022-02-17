@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import {FcfullTrash} from "react-icons/fc";
 //import { FcDownload } from "react-icons/fc";
-import { FaPenciAlt } from "react-icons/fa";
+import { FaPencilAlt } from "react-icons/fa";
 import "./style.css";
 
 //Get items in local stroage.
 const getItems =() => {
-    let list = localStroage.getItem("lists");
+    let list = localStorage.getItem("lists");
     console.log(list);
     if(list){
         return JSON.parse(localStorage.getItem("lists"));
@@ -45,19 +45,22 @@ const ToDoList = () => {
     return (
         <>
         <div className="container">
-            <h1 className="h1"> ToDo List </h1>
+            <div className="tc ma3">
+            <h1 className="h1 mb5 dim"> ToDo List </h1>
             <input
+            className=""
             type="text"
             value={inputList}
             placeholder="Add Your Items"
             onChange={inputItems}
             />
-            <button onClick={itemSubmit}> + </button>
+            <button className="ma2" onClick={itemSubmit}> + </button>
+            </div>
             {/* Display empty array using map method */}
             { items.map((itemsValue, index) => {
                 return (
-                    <div className="map" key={index}>
-                        <textArea className="fl w-20" type="text" value={inputList}> {itemsValue}
+                    <div className="map fl w-20 pa2" key={index}>
+                        <textArea className="bg-lightest-blue" type="text" value={inputList}> {itemsValue}
                         </textArea>
                         <div className="mapButton">
                             <i onClick={() => textDelete(index)}>
@@ -67,7 +70,7 @@ const ToDoList = () => {
                             <FcDownload />
                 </i> */ }
                 <i onClick={textEdit}>
-                    <FaPenciAlt/>
+                    <FaPencilAlt/>
                 </i>
                         </div>
                         </div>
